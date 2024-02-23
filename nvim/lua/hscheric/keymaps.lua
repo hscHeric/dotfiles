@@ -29,3 +29,4 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 --Edição
 vim.keymap.set("i", "jk", "<ESC>", opts) -- Retornar ao normal mode sem esc
 vim.keymap.set("i", "kj", "<ESC>", opts) -- Retornar ao normal mode sem esc
+
