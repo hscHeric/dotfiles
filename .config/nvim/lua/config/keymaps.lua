@@ -11,6 +11,11 @@ keymap("n", "-", "<C-x>")
 -- Selecionar tudo
 keymap("n", "<C-a>", "gg<S-v>G")
 
+-- Área de transferência do sistema
+keymap("v", "<C-c>", '"+y', opts)
+keymap("n", "<C-v>", '"+p', opts)
+keymap("i", "<C-v>", "<C-R>+", opts)
+
 -- Split de janelas
 keymap("n", "ss", ":split<Return>")
 keymap("n", "sv", ":vsplit<Return>")
