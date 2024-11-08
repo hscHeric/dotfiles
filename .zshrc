@@ -20,4 +20,5 @@ source <(fzf --zsh) #fzf
 #aliases
 alias ls="eza --icons=always"
 alias cd="z"
-
+alias cat='bat --paging=never'
+alias fzf ="fzf --preview 'bat --color=always {}' --preview-window '~3'"
