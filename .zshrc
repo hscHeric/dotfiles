@@ -1,5 +1,6 @@
-export PATH=$HOME/.cargo/bin:$PATH
+source ~/vulkan/1.3.296.0/setup-env.sh
 
+export PATH=$HOME/.cargo/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="bira"
@@ -21,4 +22,7 @@ source <(fzf --zsh) #fzf
 alias ls="eza --icons=always"
 alias cd="z"
 alias cat='bat --paging=never'
-alias fzf ="fzf --preview 'bat --color=always {}' --preview-window '~3'"
+
+if [ "$TMUX" = "" ]; then tmux; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
