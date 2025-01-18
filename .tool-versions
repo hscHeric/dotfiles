@@ -1,6 +1,12 @@
-zoxide 0.9.6
-fzf 0.56.0
-python 3.13.0
-nodejs 23.1.0
-lazygit 0.44.1
 lua 5.1.5
+python 3.13.0
+java oracle-21.0.2
+zoxide 0.9.6
+fzf 0.56.3
+erlang 27.2
+elixir 1.17.3-otp-27
+postgres 17.2
+nodejs 23.5.0
+lazygit 0.44.1
+golang 1.23.4
+act 0.2.71
