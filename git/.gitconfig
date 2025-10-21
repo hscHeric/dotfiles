@@ -1,0 +1,17 @@
+[user]
+	name = Heric da Silva Cruz
+	email = hericsilvaho@gmail.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[help]
+	autocorrect = 1
+[alias]
+	co = checkout
+	br = branch
+	cm = commit
+	st = status
+	last = log -1 HEAD
