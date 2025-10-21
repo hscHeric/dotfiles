@@ -7,16 +7,16 @@ function mensagem() {
   echo -e "\n#### $1 ####\n"
 }
 
-# Atualização do sistema
+# 1. Atualização do sistema
 mensagem "Iniciando o processo de atualização do sistema..."
 sudo dnf update -y
 
-# Instalar pacotes essenciais com DNF
+# 2. Instalar pacotes essenciais com DNF
 pacotes=(
   stow gcc make neovim tmux btop zsh git fzf zoxide bat fd-find alacritty
-  ripgrep python3-neovim go curl wget gnome-tweaks htop bzip2-devel libffi-devel
+  ripgrep python3-neovim curl wget gnome-tweaks htop bzip2-devel libffi-devel
   sqlite-devel tk-devel clang-format clang-tidy readline-devel util-linux-user
-  gcc make zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel
+  zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel
   openssl-devel libffi-devel xz-devel tk-devel ncurses-devel gdbm-devel
   libuuid-devel libnsl2-devel wget tar lutris texlive-scheme-basic texlive-scheme-medium
   texlive-scheme-full
@@ -25,28 +25,7 @@ pacotes=(
 mensagem "Instalando pacotes com DNF..."
 sudo dnf install -y "${pacotes[@]}"
 
-# Instalação do Oh My Zsh
-mensagem "Instalando Oh My Zsh..."
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-else
-  echo "Oh My Zsh já está instalado."
-fi
-
-# Instalar plugins do Zsh
-mensagem "Instalando plugins do Zsh..."
-ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
-git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
-git clone https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_CUSTOM/plugins/you-should-use"
-
-# Instalar fontes
-mensagem "Instalando fontes..."
-mkdir -p ~/.local/share/fonts
-cp -r "$HOME/.dotfiles/fonts/FiraCode" ~/.local/share/fonts/
-fc-cache -f -v
-
-# Instalar Flatpak e aplicativos
+# 3. Instalar o Flatpak e aplicativos
 mensagem "Instalando Flatpak e aplicativos..."
 if ! command -v flatpak &>/dev/null; then
   sudo dnf install -y flatpak
@@ -55,7 +34,41 @@ fi
 flatpak install -y flathub org.nickvision.tubeconverter
 flatpak install -y flathub com.github.tchx84.Flatseal
 
-# Instalar ASDF e linguagens
+# 4. Instalar o Oh My Zsh
+mensagem "Instalando o Oh My Zsh..."
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  echo "Oh My Zsh já está instalado."
+fi
+
+# 5. Instalar plugins do Zsh
+mensagem "Instalando plugins do Zsh..."
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_CUSTOM/plugins/you-should-use"
+
+# 6. Instalar Rust
+mensagem "Instalando Rust..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+echo "Lembrete: adicione o cargo no env."
+
+# 7. Instalar Go (se não estiver no array de pacotes)
+if ! command -v go &>/dev/null; then
+  mensagem "Instalando Go..."
+  sudo dnf install -y golang
+fi
+
+# 8. Aplicar stow para configurar os arquivos (Zsh)
+mensagem "Aplicando stow para configurar os arquivos..."
+stow zsh
+
+# 9. Dar um source no ~/.zshrc
+mensagem "Fonte do ~/.zshrc..."
+source ~/.zshrc
+
+# 10. Instalar ASDF e linguagens
 mensagem "Instalando ASDF e linguagens..."
 go install github.com/asdf-vm/asdf/cmd/asdf@v0.18.0
 
@@ -68,31 +81,17 @@ asdf plugin add python
 asdf install python 3.13.9
 asdf set -u python 3.13.9
 
-# Instalar Rust
-mensagem "Instalando Rust..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-echo "Lembrete: adicione o cargo no env."
-
-# Instalar LazyGit
+# 11. Instalar LazyGit
 mensagem "Instalando LazyGit..."
 sudo dnf copr enable dejan/lazygit
 sudo dnf install lazygit
 
-# Instalar Lutris (para jogos)
+# 12. Instalar Lutris (para jogos)
 mensagem "Instalando Lutris..."
 sudo dnf install lutris
 
-# Aplicar stow para configurar os arquivos
-mensagem "Aplicando stow para configurar os arquivos..."
-stow alacritty
-stow git
-stow nvim
-stow tmux
-stow zsh
-
-mensagem "Configurações aplicadas com sucesso!"
-
-mensagem "Instalando TPM - Tmux Package Manager"
+# 13. Instalar TPM - Tmux Package Manager
+mensagem "Instalando TPM - Tmux Package Manager..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Lembretes de configurações manuais
