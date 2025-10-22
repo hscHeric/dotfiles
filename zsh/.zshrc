@@ -16,14 +16,12 @@ plugins=(
 )
 
 #Shell
-source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 
 #aliases
 alias cd="z"
 
-#deve ficar no final, configuração dos completions
 autoload -Uz compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
