@@ -33,6 +33,7 @@ fi
 
 flatpak install -y flathub org.nickvision.tubeconverter
 flatpak install -y flathub com.github.tchx84.Flatseal
+flatpak install flathub io.github.zaedus.spider
 
 # 4. Instalar o Oh My Zsh
 mensagem "Instalando o Oh My Zsh..."
@@ -93,6 +94,7 @@ sudo dnf install lutris
 # 13. Instalar TPM - Tmux Package Manager
 mensagem "Instalando TPM - Tmux Package Manager..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+mensagem "Lembre-se de usar <leader> I para instalar os pacotes"
 
 # Lembretes de configurações manuais
 mensagem "Lembretes importantes:"
