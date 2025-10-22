@@ -12,6 +12,7 @@ plugins=(
   you-should-use
   zsh-autosuggestions
   zsh-syntax-highlighting
+  fzf
 )
 
 #Shell
