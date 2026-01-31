@@ -10,6 +10,7 @@
 SYSTEM_PACKAGES=(
   git stow zsh curl wget util-linux-user
   dnf-plugins-core flatpak eza bat fd-find ripgrep readline-devel
+  gnome-tweaks
 )
 
 # Ferramentas gerenciadas pelo Mise
@@ -88,6 +89,13 @@ deltarpm=True
 EOT
   sudo dnf upgrade --refresh -y
   success "Sistema atualizado."
+fi
+
+if confirm_step "Instalar Ghostty Terminal (via COPR)"; then
+  info "Habilitando repositório COPR para Ghostty..."
+  sudo dnf copr enable scottames/ghostty -y
+  sudo dnf install -y ghostty
+  success "Ghostty instalado."
 fi
 
 # 2. Dependências Nativas
@@ -180,6 +188,7 @@ if confirm_step "Aplicar Dotfiles via Stow"; then
   rm -rf "$HOME/.config/nvim" "$HOME/.zshrc" "$HOME/.aliases"
   stow zsh
   stow nvim
+  stow ghostty
   success "Configurações linkadas."
 fi
 
@@ -196,6 +205,7 @@ echo -e "\n${BLUE}=======================================================${NC}"
 echo -e "${YELLOW}${BOLD}            AÇÕES MANUAIS RESTANTES                    ${NC}"
 echo -e "${BLUE}=======================================================${NC}"
 echo -e "1. ${BOLD}Som:${NC} Ajustes > Geral > Aumentar Volume Máximo"
+echo -e "1. ${BOLD}Font:${NC} Diminua o tamanho da fonte no gnome-tweaks"
 echo -e "2. ${BOLD}Touchpad:${NC} Configurações > Touchpad > Habilitar 'Tocar para Clicar'"
 echo -e "3. ${BOLD}GitHub:${NC} Adicione a chave pública exibida acima ao seu GitHub."
 echo -e "${BLUE}=======================================================${NC}"
