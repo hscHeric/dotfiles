@@ -1,0 +1,11 @@
+# Navegação e Listagem (eza)
+alias ls='eza --icons'
+alias ll='eza -l --icons --git'
+alias la='eza -la --icons'
+
+# Utilitários (bat/rg)
+alias cat='bat'
+alias grep='rg'
+
+# Mise shortcut
+alias x='mise x --'
