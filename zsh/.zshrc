@@ -1,5 +1,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+
+export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
+
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 fpath=($ZSH_CUSTOM/completions $fpath)
 
@@ -24,3 +27,5 @@ fi
 if [ -f "$HOME/.aliases" ]; then
     source "$HOME/.aliases"
 fi
+
+source <(fzf --zsh)

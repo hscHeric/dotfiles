@@ -22,7 +22,7 @@ SHOW_OMARCHY_SHORTCUTS=true # Defina como 'false' para ocultar o guia de atalhos
 SYSTEM_PACKAGES=(
   git stow zsh curl wget util-linux-user
   dnf-plugins-core flatpak bat fd-find ripgrep
-  readline-devel btop gnome-tweaks
+  readline-devel ncurses-devel libtermcap-devel btop gnome-tweaks fuse fuse-libs
 )
 
 # Ferramentas gerenciadas pelo Mise (Runtimes de desenvolvimento)
@@ -34,6 +34,11 @@ MISE_TOOLS=(
   "node@latest"
   "cmake@latest"
   "make@latest"
+  "fzf@latest"
+  "bat@latest"
+  "eza@latest"
+  "fd@latest"
+  "ripgrep@latest"
 )
 
 # Aplicativos via Flatpak (Flathub)
@@ -43,6 +48,7 @@ FLATPAK_APPS=(
   "ca.desrt.dconf-editor"            # Editor avançado de configurações
   "org.localsend.localsend_app"      # Localsend para compartilhar arquivos com o celular
   "it.mijorus.gearlever"             # Gerenciador de AppImages
+  "com.discordapp.Discord"           #Discord
 )
 
 # --- ESTILIZAÇÃO E UI ---
