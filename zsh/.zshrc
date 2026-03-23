@@ -29,3 +29,16 @@ if [ -f "$HOME/.aliases" ]; then
 fi
 
 source <(fzf --zsh)
+
+if [[ $- == *i* ]] && [[ -z "$TMUX" ]] && command -v tmux >/dev/null 2>&1; then
+    case "$TERM" in
+        dumb) ;;
+        *)
+            if tmux has-session 2>/dev/null; then
+                exec tmux attach-session
+            else
+                exec tmux new-session
+            fi
+            ;;
+    esac
+fi
