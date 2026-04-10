@@ -1,6 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-
-
+. "$HOME/.cargo/env" 
 export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
 
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
