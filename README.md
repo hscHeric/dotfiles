@@ -7,12 +7,12 @@ Configuração pessoal para uma instalação Fedora, gerenciada com GNU Stow.
 Clone este repositório no diretório padrão e execute o instalador como usuário normal:
 
 ```bash
-git clone <URL-DO-REPOSITORIO> ~/.dotfiles
+git clone https://github.com/hscHeric/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./install.sh
 ```
 
-O script solicitará `sudo` para instalar pacotes, grupos do DNF, repositórios e Flatpaks. Ele também instala o mise, aplica os dotfiles e instala as ferramentas declaradas.
+O script solicitará `sudo` para instalar pacotes, grupos do DNF, repositórios e Flatpaks. Ele também instala o mise, aplica os dotfiles, instala as ferramentas declaradas e configura preferências do GNOME.
 
 O instalador pode ser executado novamente: etapas já concluídas são identificadas e ignoradas.
 

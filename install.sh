@@ -123,6 +123,7 @@ stow_dotfiles() {
         "$DOTFILES_DIR/bash/.bashrc.d|$HOME/.bashrc.d"
         "$DOTFILES_DIR/mise/.config/mise|$HOME/.config/mise"
         "$DOTFILES_DIR/nvim/.config/nvim|$HOME/.config/nvim"
+        "$DOTFILES_DIR/git/.gitconfig|$HOME/.gitconfig"
     )
 
     info "Aplicando dotfiles com Stow"
@@ -138,7 +139,7 @@ stow_dotfiles() {
     done
 
     if [[ "$needs_stow" == true ]]; then
-        stow --dir="$DOTFILES_DIR" --target="$HOME" --restow bash mise nvim
+        stow --dir="$DOTFILES_DIR" --target="$HOME" --restow bash mise nvim git
     else
         printf 'Todos os links do Stow já estão configurados.\n'
     fi
@@ -188,6 +189,17 @@ install_flatpaks() {
     fi
 }
 
+configure_gnome() {
+    info "Configurando preferências do GNOME"
+    if ! gsettings list-schemas | grep -Fxq org.gnome.desktop.sound; then
+        warn "Schema de som do GNOME não encontrado; limite de volume não foi configurado."
+    elif [[ "$(gsettings get org.gnome.desktop.sound allow-volume-above-100-percent)" == "true" ]]; then
+        printf 'Ignorando limite de volume: opção acima de 100%% já está habilitada.\n'
+    else
+        gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
+    fi
+}
+
 finish() {
     info "Instalação concluída"
     if [[ "$backup_created" == true ]]; then
@@ -205,6 +217,7 @@ main() {
     stow_dotfiles
     install_mise_tools
     install_flatpaks
+    configure_gnome
     finish
 }
 

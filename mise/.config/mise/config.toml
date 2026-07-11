@@ -1,7 +1,7 @@
 [tools]
-fzf = "latest"
-just = "latest"
-lazygit = "latest"
-node = "latest"
-tree-sitter = "latest"
-usage = "latest"
+fzf = "0.74.0"
+just = "1.56.0"
+lazygit = "0.63.0"
+node = "26.5.0"
+tree-sitter = "0.26.10"
+usage = "3.5.4"
