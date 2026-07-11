@@ -1,0 +1,7 @@
+[tools]
+fzf = "latest"
+just = "latest"
+lazygit = "latest"
+node = "latest"
+tree-sitter = "latest"
+usage = "latest"
