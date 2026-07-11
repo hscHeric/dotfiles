@@ -12,7 +12,7 @@ cd ~/.dotfiles
 ./install.sh
 ```
 
-O script solicitará `sudo` para instalar pacotes, grupos do DNF, repositórios e Flatpaks. Ele também instala o mise, aplica os dotfiles, instala as ferramentas declaradas e configura preferências do GNOME.
+O script solicitará `sudo` para atualizar o Fedora e os Flatpaks, instalar pacotes, grupos do DNF, repositórios e aplicativos. Ele também instala o mise, aplica os dotfiles, instala as ferramentas declaradas e configura preferências do GNOME.
 
 O instalador pode ser executado novamente: etapas já concluídas são identificadas e ignoradas.
 

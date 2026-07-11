@@ -58,6 +58,9 @@ install_dnf_content() {
     info "Validando acesso administrativo"
     sudo -v
 
+    info "Atualizando o sistema Fedora"
+    sudo dnf upgrade --refresh -y
+
     info "Instalando suporte do DNF para repositórios adicionais"
     if rpm -q --quiet dnf-plugins-core; then
         printf 'Ignorando dnf-plugins-core: pacote já instalado.\n'
@@ -173,6 +176,7 @@ install_flatpaks() {
     fi
 
     info "Instalando aplicativos Flatpak"
+    sudo flatpak update --system --noninteractive -y
     mapfile -t apps < <(read_list "$DOTFILES_DIR/packages/flatpak.txt")
     mapfile -t installed_apps < <(flatpak list --system --app --columns=application)
     for app in "${apps[@]}"; do
