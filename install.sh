@@ -52,11 +52,33 @@ require_fedora() {
     [[ $EUID -ne 0 ]] || die "Execute este script como usuário normal; ele solicitará sudo quando necessário."
 }
 
+set_dnf_option() {
+    local key="$1"
+    local value="$2"
+    local config='/etc/dnf/dnf.conf'
+
+    if grep -Eqi "^[[:space:]]*${key}[[:space:]]*=[[:space:]]*${value}[[:space:]]*$" "$config"; then
+        printf 'Ignorando %s: opção do DNF já configurada como %s.\n' "$key" "$value"
+    elif grep -Eq "^[[:space:]]*${key}[[:space:]]*=" "$config"; then
+        sudo sed -Ei "s|^[[:space:]]*${key}[[:space:]]*=.*|${key}=${value}|" "$config"
+    else
+        printf '%s=%s\n' "$key" "$value" | sudo tee -a "$config" >/dev/null
+    fi
+}
+
+configure_dnf() {
+    info "Configurando o DNF"
+    set_dnf_option fastestmirror True
+    set_dnf_option max_parallel_downloads 15
+}
+
 install_dnf_content() {
     local -a repos=() packages=() groups=() missing_packages=() missing_groups=()
 
     info "Validando acesso administrativo"
     sudo -v
+
+    configure_dnf
 
     info "Atualizando o sistema Fedora"
     sudo dnf upgrade --refresh -y
