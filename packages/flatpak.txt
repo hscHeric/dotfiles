@@ -1,5 +1,6 @@
 ca.desrt.dconf-editor
 com.bitwarden.desktop
+com.usebottles.bottles
 io.github.getnf.embellish
 net.lutris.Lutris
 org.nickvision.tubeconverter
