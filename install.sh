@@ -226,13 +226,6 @@ configure_gnome() {
         gsettings set org.gnome.desktop.sound allow-volume-above-100-percent true
     fi
 
-    if ! gsettings list-schemas | grep -Fxq org.gnome.desktop.interface; then
-        warn "Schema de interface do GNOME não encontrado; tema GTK não foi configurado."
-    elif [[ "$(gsettings get org.gnome.desktop.interface gtk-theme)" == "'Adwaita-dark'" ]]; then
-        printf 'Ignorando tema GTK: Adwaita-dark já está configurado.\n'
-    else
-        gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-    fi
 }
 
 finish() {
