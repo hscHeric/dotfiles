@@ -5,5 +5,7 @@
 
 ;;; Code:
 
+(message "Configuração pessoal de hscheric carregada com sucesso.")
+
 (provide 'hscheric-init)
 ;;; init.el ends here
