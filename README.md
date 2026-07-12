@@ -18,7 +18,7 @@ O instalador pode ser executado novamente: etapas já concluídas são identific
 
 Arquivos conflitantes são preservados em `~/.dotfiles-backup/` antes da criação dos links.
 
-O LazyVim é clonado diretamente do repositório oficial em `~/.config/nvim`. Apenas os scripts pessoais em `~/.config/nvim/lua/hscheric` são gerenciados pelos dotfiles. Para carregar o módulo pessoal, adicione `require("hscheric").setup()` ao `init.lua` do Neovim.
+O LazyVim é clonado diretamente do repositório oficial em `~/.config/nvim`. Os scripts pessoais ficam em `~/.config/nvim/lua/hscheric`. Os plugins em `lua/hscheric/plugins` são carregados automaticamente pelo arquivo-ponte `lua/plugins/hscheric.lua`.
 
 Depois da instalação, conclua as tarefas descritas em [MANUAL_SETUP.md](MANUAL_SETUP.md).
 

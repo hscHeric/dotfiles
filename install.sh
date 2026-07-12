@@ -167,6 +167,7 @@ stow_dotfiles() {
         "$DOTFILES_DIR/bash/.bashrc.d|$HOME/.bashrc.d"
         "$DOTFILES_DIR/mise/.config/mise|$HOME/.config/mise"
         "$DOTFILES_DIR/nvim/.config/nvim/lua/hscheric|$HOME/.config/nvim/lua/hscheric"
+        "$DOTFILES_DIR/nvim/.config/nvim/lua/plugins/hscheric.lua|$HOME/.config/nvim/lua/plugins/hscheric.lua"
         "$DOTFILES_DIR/git/.gitconfig|$HOME/.gitconfig"
         "$DOTFILES_DIR/emacs/.local/share/applications/emacs.desktop|$HOME/.local/share/applications/emacs.desktop"
     )
