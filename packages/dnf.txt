@@ -2,7 +2,6 @@ bash-completion
 brave-browser
 curl
 dnf-plugins-core
-emacs
 eza
 fd-find
 flatpak

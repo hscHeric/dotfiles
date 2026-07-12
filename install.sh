@@ -149,8 +149,6 @@ stow_dotfiles() {
         "$DOTFILES_DIR/mise/.config/mise|$HOME/.config/mise"
         "$DOTFILES_DIR/nvim/.config/nvim|$HOME/.config/nvim"
         "$DOTFILES_DIR/git/.gitconfig|$HOME/.gitconfig"
-        "$DOTFILES_DIR/doom/.doom.d/config.el|$HOME/.doom.d/config.el"
-        "$DOTFILES_DIR/doom/.doom.d/hscheric|$HOME/.doom.d/hscheric"
     )
 
     info "Aplicando dotfiles com Stow"
@@ -166,7 +164,7 @@ stow_dotfiles() {
     done
 
     if [[ "$needs_stow" == true ]]; then
-        stow --dir="$DOTFILES_DIR" --target="$HOME" --restow bash mise nvim git doom
+        stow --dir="$DOTFILES_DIR" --target="$HOME" --restow bash mise nvim git
     else
         printf 'Todos os links do Stow já estão configurados.\n'
     fi
