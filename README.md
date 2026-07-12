@@ -12,7 +12,7 @@ cd ~/.dotfiles
 ./install.sh
 ```
 
-O script solicitará `sudo` para configurar o DNF, atualizar o Fedora e os Flatpaks, instalar pacotes, grupos, repositórios e aplicativos. Ele também instala o mise, aplica os dotfiles, instala as ferramentas declaradas e configura preferências do GNOME.
+O script solicitará `sudo` para configurar o DNF, atualizar o Fedora e os Flatpaks, instalar pacotes, grupos, repositórios e aplicativos. Ele também instala o mise, aplica os dotfiles, instala as ferramentas declaradas, configura preferências do GNOME e instala o Doom Emacs ao final.
 
 O instalador pode ser executado novamente: etapas já concluídas são identificadas e ignoradas.
 

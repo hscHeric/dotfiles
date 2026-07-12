@@ -227,6 +227,31 @@ configure_gnome() {
 
 }
 
+install_doom_emacs() {
+    local emacs_dir="$HOME/.emacs.d"
+    local origin=""
+
+    info "Instalando Doom Emacs"
+    if [[ -d "$emacs_dir/.git" ]]; then
+        origin="$(git -C "$emacs_dir" remote get-url origin 2>/dev/null || true)"
+    fi
+
+    if [[ "$origin" == *"github.com/hlissner/doom-emacs"* ]]; then
+        printf 'Ignorando clone do Doom Emacs: repositório já existe.\n'
+    else
+        if [[ -e "$emacs_dir" || -L "$emacs_dir" ]]; then
+            backup_conflict "$DOTFILES_DIR" "$emacs_dir"
+        fi
+        git clone https://github.com/hlissner/doom-emacs "$emacs_dir"
+    fi
+
+    if [[ -f "$HOME/.doom.d/init.el" && -d "$emacs_dir/.local" ]]; then
+        printf 'Ignorando doom install: Doom Emacs já está configurado.\n'
+    else
+        "$emacs_dir/bin/doom" install
+    fi
+}
+
 finish() {
     info "Instalação concluída"
     if [[ "$backup_created" == true ]]; then
@@ -245,6 +270,7 @@ main() {
     install_mise_tools
     install_flatpaks
     configure_gnome
+    install_doom_emacs
     finish
 }
 
