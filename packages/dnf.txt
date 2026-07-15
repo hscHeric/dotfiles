@@ -1,14 +1,17 @@
 bash-completion
 brave-browser
 clang-tools-extra
+cmake
 curl
 dnf-plugins-core
 emacs
 eza
 fd-find
 flatpak
+gcc-c++
 git
 gnome-tweaks
+libstdc++-devel
 neovim
 qbittorrent
 ripgrep
