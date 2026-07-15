@@ -1,5 +1,6 @@
 bash-completion
 brave-browser
+clang-tools-extra
 curl
 dnf-plugins-core
 emacs
