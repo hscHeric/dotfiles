@@ -1,3 +1,3 @@
 return {
-  { import = "hscheric.plugins" },
+  { import = "hscheric" },
 }

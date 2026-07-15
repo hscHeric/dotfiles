@@ -142,21 +142,14 @@ install_mise() {
 
 install_lazyvim() {
     local nvim_dir="$HOME/.config/nvim"
-    local origin=""
 
-    info "Instalando LazyVim"
-    if [[ -d "$nvim_dir/.git" ]]; then
-        origin="$(git -C "$nvim_dir" remote get-url origin 2>/dev/null || true)"
+    info "Reinstalando LazyVim"
+    if [[ -e "$nvim_dir" || -L "$nvim_dir" ]]; then
+        backup_conflict "$DOTFILES_DIR" "$nvim_dir"
     fi
 
-    if [[ "$origin" == *"github.com/LazyVim/starter"* ]]; then
-        printf 'Ignorando clone do LazyVim: repositório oficial já existe.\n'
-    else
-        if [[ -e "$nvim_dir" || -L "$nvim_dir" ]]; then
-            backup_conflict "$DOTFILES_DIR" "$nvim_dir"
-        fi
-        git clone https://github.com/LazyVim/starter "$nvim_dir"
-    fi
+    git clone https://github.com/LazyVim/starter "$nvim_dir"
+    rm -rf -- "$nvim_dir/.git"
 }
 
 stow_dotfiles() {
