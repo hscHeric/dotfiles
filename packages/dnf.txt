@@ -17,4 +17,5 @@ qbittorrent
 ripgrep
 ShellCheck
 stow
+texlive-scheme-full
 zoxide
