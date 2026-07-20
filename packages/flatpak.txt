@@ -5,5 +5,5 @@ io.github.getnf.embellish
 net.lutris.Lutris
 org.nickvision.tubeconverter
 org.videolan.VLC
-flathub com.obsproject.Studio
+com.obsproject.Studio
 com.mattjakeman.ExtensionManager
