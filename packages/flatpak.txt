@@ -1,9 +1,12 @@
 ca.desrt.dconf-editor
 com.bitwarden.desktop
+com.github.tchx84.Flatseal
+com.mattjakeman.ExtensionManager
+com.obsproject.Studio
 com.usebottles.bottles
+com.valvesoftware.Steam
 io.github.getnf.embellish
 net.lutris.Lutris
+org.gnome.Extensions
 org.nickvision.tubeconverter
 org.videolan.VLC
-com.obsproject.Studio
-com.mattjakeman.ExtensionManager
