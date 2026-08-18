@@ -28,3 +28,6 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+
+# kimi-code
+export PATH="/home/hscheric/.kimi-code/bin:$PATH"

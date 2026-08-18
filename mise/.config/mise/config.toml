@@ -1,7 +1,9 @@
 [tools]
+btop = "latest"
 fzf = "0.74.0"
+go = "latest"
 just = "1.56.0"
 lazygit = "0.63.0"
 node = "26.5.0"
 tree-sitter = "0.26.10"
-usage = "3.5.4"
+usage = "latest"
