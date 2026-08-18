@@ -1,12 +1,16 @@
 ca.desrt.dconf-editor
 com.bitwarden.desktop
+com.discordapp.Discord
 com.github.tchx84.Flatseal
 com.mattjakeman.ExtensionManager
 com.obsproject.Studio
 com.usebottles.bottles
 com.valvesoftware.Steam
+io.dbeaver.DBeaverCommunity
 io.github.getnf.embellish
+it.mijorus.gearlever
 net.lutris.Lutris
 org.gnome.Extensions
 org.nickvision.tubeconverter
 org.videolan.VLC
+page.tesk.Refine
